@@ -2,9 +2,13 @@
 package com.mycompany.ollivanders;
 
 public class Wizard {
-    private int id; 
+
+    private int id;
     private String name;
     private Wand wand;
+
+    public Wizard() {
+    }
 
     public Wizard(String name, Wand wand) {
         this.name = name;

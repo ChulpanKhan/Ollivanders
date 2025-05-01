@@ -1,13 +1,28 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package com.mycompany.ollivanders;
 
-/**
- *
- * @author MyHuawei
- */
+import java.time.LocalDate;
+
 public class Supply {
+
+    private int id;
+    private LocalDate supplyDate;
     
+    public Supply() {}
+
+    public Supply(LocalDate supplyDate) {
+        this.supplyDate = supplyDate;
+    }
+    
+    //getters and setters
+    public int getId() {
+        return id;
+    }
+    
+    public LocalDate getSupplyDate() {
+        return supplyDate;
+    }
+    public void setSupplyDate(LocalDate supplyDate){
+        this.supplyDate = supplyDate;
+    }
 }
