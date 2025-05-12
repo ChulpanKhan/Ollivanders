@@ -1,12 +1,23 @@
 
 package com.mycompany.ollivanders;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "storage")
 public class Storage {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @Column(name = "object", length = 100)
     private String itemName;
+    @Column(name = "type", length = 20)
     private String type; //core or wood
-    private int quantity;    
+    @Column(name = "quantity")
+    private int quantity;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "supply_id")
     private Supply supply;
 
     public Storage() {}
@@ -19,6 +30,10 @@ public class Storage {
     }
     
     //getters and setters
+    public int getId(){
+        return id;
+    }
+    
     public String getItemName(){
         return itemName;
     }

@@ -1,5 +1,5 @@
 
-package com.mycompany.ollivanders;
+package com.mycompany.ollivanders.GUI;
 
 import javax.swing.JOptionPane;
 

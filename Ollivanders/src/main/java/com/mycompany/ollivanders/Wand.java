@@ -1,21 +1,31 @@
 
 package com.mycompany.ollivanders;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "wand")
 public class Wand {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String core;
+    @Column(name = "wood", length = 100)
     private String wood;
+    @Column(name = "core", length = 100)
+    private String core;
+    @Column(name = "status", length = 20)
     private String status;
 
     public Wand() {
     }
 
-    public Wand(String core, String wood) {
+    public Wand(String core, String wood, String status) {
         this.core = core;
         this.wood = wood;
+        this.status = status;
     }
-    
+
     //getters and setters
     public int getId(){
         return id;

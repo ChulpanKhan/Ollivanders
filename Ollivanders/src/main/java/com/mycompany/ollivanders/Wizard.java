@@ -1,10 +1,18 @@
 
 package com.mycompany.ollivanders;
 
-public class Wizard {
+import jakarta.persistence.*;
 
+@Entity
+@Table(name = "wizard")
+public class Wizard {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @Column(name = "name", length = 100)
     private String name;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "wand_id")
     private Wand wand;
 
     public Wizard() {

@@ -1,16 +1,21 @@
 
 package com.mycompany.ollivanders;
 
-import java.time.LocalDate;
+import jakarta.persistence.*;
+import java.sql.Timestamp;
 
+@Entity
+@Table(name = "supply")
 public class Supply {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private LocalDate supplyDate;
+    @Column(name = "date")
+    private Timestamp supplyDate;
     
     public Supply() {}
 
-    public Supply(LocalDate supplyDate) {
+    public Supply(Timestamp supplyDate) {
         this.supplyDate = supplyDate;
     }
     
@@ -19,10 +24,10 @@ public class Supply {
         return id;
     }
     
-    public LocalDate getSupplyDate() {
+    public Timestamp getSupplyDate() {
         return supplyDate;
     }
-    public void setSupplyDate(LocalDate supplyDate){
+    public void setSupplyDate(Timestamp supplyDate){
         this.supplyDate = supplyDate;
     }
 }
