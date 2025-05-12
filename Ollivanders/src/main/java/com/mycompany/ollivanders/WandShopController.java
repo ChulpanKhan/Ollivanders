@@ -5,7 +5,6 @@ import com.mycompany.ollivanders.JpaService.*;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
 
 public class WandShopController {
 

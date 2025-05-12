@@ -2,12 +2,10 @@
 package com.mycompany.ollivanders;
 
 import com.mycompany.ollivanders.GUI.WandShopFrame;
-import com.mycompany.ollivanders.JpaService.JpaUtil;
 import com.mycompany.ollivanders.JpaService.StorageService;
 import com.mycompany.ollivanders.JpaService.SupplyService;
 import com.mycompany.ollivanders.JpaService.WandService;
 import com.mycompany.ollivanders.JpaService.WizardService;
-import jakarta.persistence.EntityManager;
 
 public class Ollivanders {
 

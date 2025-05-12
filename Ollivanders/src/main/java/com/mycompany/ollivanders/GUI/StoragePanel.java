@@ -5,7 +5,9 @@ import com.mycompany.ollivanders.Storage;
 import com.mycompany.ollivanders.WandShopController;
 import java.awt.BorderLayout;
 import java.awt.Font;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -38,27 +40,40 @@ public class StoragePanel extends JPanel {
         refreshTable();
     }
 
-    public void refreshTable() {
-        try {
-            List<Storage> items = controller.getAllStorageItems();
-            DefaultTableModel model = new DefaultTableModel(new Object[]{"ID", "Название", "Тип", "Количество"}, 0) {
+public void refreshTable() {
+    try {
+        List<Storage> items = controller.getAllStorageItems();
+        DefaultTableModel model = new DefaultTableModel(new Object[]{"Название", "Тип", "Количество"}, 0) {
             @Override
             public boolean isCellEditable(int row, int column) {
                 return false; 
             }
         };
-            for (Storage item : items) {
-                model.addRow(new Object[]{
-                    item.getId(),
-                    item.getItemName(),
-                    item.getType(),
-                    item.getQuantity()
-                });
+
+        Map<String, Storage> itemMap = new HashMap<>();
+        
+        for (Storage item : items) {
+            String itemName = item.getItemName();
+            if (itemMap.containsKey(itemName)) {
+                Storage existingItem = itemMap.get(itemName);
+                existingItem.setQuantity(existingItem.getQuantity() + item.getQuantity());
+            } else {
+                itemMap.put(itemName, item);
             }
-            storageTable.setModel(model);
-        } catch (Exception e) {
-            DialogUtils.showErrorMessage("Не удалось загрузить данные склада: " + e.getMessage());
         }
+
+        for (Storage item : itemMap.values()) {
+            model.addRow(new Object[]{
+                item.getItemName(),
+                item.getType(),
+                item.getQuantity()
+            });
+        }
+        
+        storageTable.setModel(model);
+    } catch (Exception e) {
+        DialogUtils.showErrorMessage("Не удалось загрузить данные склада: " + e.getMessage());
     }
+}
     
 }
