@@ -2,7 +2,6 @@
 package com.mycompany.ollivanders.GUI;
 
 import com.mycompany.ollivanders.WandShopController;
-
 import javax.swing.*;
 import java.awt.*;
 
@@ -102,6 +101,7 @@ public class WandShopFrame extends JFrame {
         reminderLabel.setFont(new Font("Garamond", Font.ITALIC, 18));
 
         ImageIcon gif = new ImageIcon(WizardPanel.class.getResource("/images/200w.gif"));
+        //ImageIcon gif = new ImageIcon(WizardPanel.class.getResource("/images/dod.gif"));
         JLabel gifLabel = new JLabel(gif);
         gifLabel.setHorizontalAlignment(SwingConstants.CENTER);
 

@@ -1,10 +1,14 @@
 
 package com.mycompany.ollivanders.GUI;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.io.InputStream;
 import javax.swing.JButton;
+import javax.swing.JPanel;
 
 public class Design {
 
@@ -40,5 +44,22 @@ public class Design {
             e.printStackTrace();
             return new Font("Serif", Font.PLAIN, (int) size); //запасной
         }
+    }
+    
+    public static JPanel createPanelWithPhoto(Image image) {
+        if (image == null) {
+            System.out.println("Изображение skyImage не загружено.");
+            return (new JPanel(new BorderLayout())); 
+        }
+
+        JPanel backgroundPanel = new JPanel(new BorderLayout()) {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                g.drawImage(image, 0, 0, getWidth(), getHeight(), this);
+            }
+        };
+        backgroundPanel.setOpaque(false);
+        return backgroundPanel;
     }
 }
