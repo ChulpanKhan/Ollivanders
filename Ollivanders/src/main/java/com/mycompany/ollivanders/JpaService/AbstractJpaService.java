@@ -81,9 +81,9 @@ public abstract class AbstractJpaService<T> {
     EntityTransaction tx = em.getTransaction();
     try {
         tx.begin();
-        String tableName = getEntityClass().getSimpleName().toLowerCase(); // assumes table = lowercase class
+        String tableName = getEntityClass().getSimpleName().toLowerCase(); 
         String sql = "TRUNCATE TABLE " + tableName + " RESTART IDENTITY CASCADE";
-        em.createNativeQuery(sql).executeUpdate(); // native SQL
+        em.createNativeQuery(sql).executeUpdate();
         tx.commit();
     } catch (Exception e) {
         if (tx.isActive()) {
